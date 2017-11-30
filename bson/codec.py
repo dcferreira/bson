@@ -292,7 +292,7 @@ def decode_document(data, base, as_array=False):
             length = int_struct.unpack(data[base:base + 4])[0]
             value = data[base + 4: base + 4 + length - 1]
             if PY3:
-                value = value.decode("utf-8")
+                value = value.decode("utf-8", errors='replace')
             else:
                 value = unicode(value)
             base += 4 + length
